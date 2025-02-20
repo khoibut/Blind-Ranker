@@ -6,7 +6,7 @@ function Footer() {
                 © 2025 - khoibut | Contact: khoibut09@gmail.com
             </div>
             <div>
-                Built with ReactJS
+                Built with React + TS
             </div>
             <img src={github} className="w-9 h-9" />
         </footer>
