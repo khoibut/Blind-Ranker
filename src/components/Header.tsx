@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 function Header({ username }: { username: string | null }) {
+    const navigate = useNavigate();
     function displayUsername() {
         if (username !== null) {
             return (
@@ -10,26 +13,34 @@ function Header({ username }: { username: string | null }) {
         } else {
             return (
                 <>
-                    <div className="text-xl">
-                        Sign in
-                    </div>
-                    <div className="text-xl bg-gray-200 text-gray-600 px-5 rounded-2xl py-0.5 hover:cursor-pointer duration-300">
-                        Sign up
-                    </div>
+                    <Link to="/signin">
+                        <div className="text-xl">
+                            Sign in
+                        </div>
+                    </Link>
+                    <Link to={"/signup"}>
+                        <div className="text-xl bg-gray-200 text-gray-600 px-5 rounded-2xl py-0.5 hover:cursor-pointer duration-300">
+                            Sign up
+                        </div>
+                    </Link>
                 </>
             )
         }
     }
     return (
         <>
-            <header className="w-full fixed top-0 left-0 bg-gray-500 text-white px-5 flex justify-between drop-shadow-[0px 4px 4px rgba(0,0,0,0.25)]">
+            <header className="w-full fixed top-0 left-0 bg-gray-500 text-white px-5 flex justify-between shadow-2xl">
                 <div className="flex items-center justify-between gap-20">
-                    <div className="text-4xl hover:cursor-pointer">
-                        Blind Ranker
-                    </div>
-                    <div className="text-xl hover:text-gray-600 py-4 px-10 hover:bg-white hover:cursor-pointer duration-300">
-                        Explore
-                    </div>
+                    <Link to="/">
+                        <div className="text-4xl hover:cursor-pointer">
+                            Blind Ranker
+                        </div>
+                    </Link>
+                    <Link to="/explore">
+                        <div className="text-xl hover:text-gray-600 py-4 px-10 hover:bg-white hover:cursor-pointer duration-300">
+                            Explore
+                        </div>
+                    </Link>
                     <div className="text-xl py-4 px-10 hover:text-gray-600 hover:bg-white hover:cursor-pointer duration-300">
                         Create
                     </div>
