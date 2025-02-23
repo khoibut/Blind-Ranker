@@ -1,4 +1,3 @@
-import CreateEntry from "../components/CreateEntry";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import refreshIcon from "../assets/refreshIcon.svg";

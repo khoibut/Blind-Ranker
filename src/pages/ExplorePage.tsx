@@ -3,10 +3,23 @@ import SearchIcon from "../assets/search.svg";
 import ListExplore from "../components/ListExplore";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef,useState } from "react";
+import { BlindListType } from "../types/BlindListType";
+import axios from "axios";
 function ExplorePage() {
+	const baseUrl = import.meta.env.VITE_API_URL;
 	const navigate = useNavigate();
 	const searchBar = useRef<HTMLInputElement>(null);
+	const [recentBlindLists, setRecentBlindLists] = useState<BlindListType[]>([]);
+	useEffect(() => {
+		const header={
+			"Content-Type":"application/json",
+			"Authorization":`Bearer ${localStorage.getItem("token")}`
+		}
+		axios.get(`${baseUrl}/blindlist/recent`,{params:{page:1,perPage:10},headers:header}).then((res) => {
+			setRecentBlindLists(res.data.data);
+		});
+	},[])
 	return (
 		<>
 			<Header username={null} />
@@ -27,14 +40,9 @@ function ExplorePage() {
 				<div className="text-5xl mt-60 flex flex-col items-center w-full justify-center px-10">
 					EXPLORE THESE RECENT BLIND LISTS
 					<div className="mt-20 w-full grid grid-cols-[repeat(auto-fit,27rem)] gap-y-10 justify-center">
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
-						<ListExplore listName="CaseOh food ranking" listCreator="CaseOhFanGirl69" listImage={null} />
+						{recentBlindLists.map((list) => {
+							return <ListExplore listName={list?.name} listCreator={list.user.name} listImage={null} key={list.id} />
+						})}
 					</div>
 				</div>
 			</div>

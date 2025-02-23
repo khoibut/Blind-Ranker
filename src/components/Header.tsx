@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 function Header({ username }: { username: string | null }) {
   const navigate = useNavigate();
   function displayUsername() {
-    if (username !== null) {
+    if (localStorage.getItem("token")) {
       return (
         <>
-          <div className="text-xl">{username}</div>
+          <div className="text-xl">{localStorage.getItem("username")}</div>
           <div className="w-11 h-11 bg-gray-200 rounded-full flex items-center justify-center"></div>
         </>
       );
