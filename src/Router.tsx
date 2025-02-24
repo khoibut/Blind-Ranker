@@ -15,7 +15,7 @@ function Router() {
                 <Route path="/signin" element={<SignInPage />} />
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/create" element={<CreateListPage />} />
-                <Route path="/rank" element={<BlindRankPage />} />
+                <Route path="/rank/:listId" element={<BlindRankPage />} />
             </Routes>
         </BrowserRouter>
     );

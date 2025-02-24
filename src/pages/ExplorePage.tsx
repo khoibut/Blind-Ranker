@@ -16,7 +16,7 @@ function ExplorePage() {
 			"Content-Type":"application/json",
 			"Authorization":`Bearer ${localStorage.getItem("token")}`
 		}
-		axios.get(`${baseUrl}/blindlist/recent`,{params:{page:1,perPage:10},headers:header}).then((res) => {
+		axios.get(`${baseUrl}/api/blindlist/recent`,{params:{page:1,perPage:10},headers:header}).then((res) => {
 			setRecentBlindLists(res.data.data);
 		});
 	},[])
@@ -41,7 +41,7 @@ function ExplorePage() {
 					EXPLORE THESE RECENT BLIND LISTS
 					<div className="mt-20 w-full grid grid-cols-[repeat(auto-fit,27rem)] gap-y-10 justify-center">
 						{recentBlindLists.map((list) => {
-							return <ListExplore listName={list?.name} listCreator={list.user.name} listImage={null} key={list.id} />
+							return <ListExplore id={list.id} listName={list?.name} listCreator={list.user.name} listImage={list.image_path} key={list.id} />
 						})}
 					</div>
 				</div>

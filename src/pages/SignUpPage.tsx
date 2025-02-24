@@ -26,7 +26,7 @@ function SignUpPage() {
         const header = {
             "Content-Type": "application/json",
         }
-        axios.post(`${baseUrl}/user/register`, {
+        axios.post(`${baseUrl}/api/user/register`, {
             name: usernameRef.current?.value,
             email: emailRef.current?.value,
             password: passwordRef.current?.value,

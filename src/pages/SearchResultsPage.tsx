@@ -20,7 +20,7 @@ function SearchResultsPage() {
 			"Content-Type": "application/json",
 			"Authorization": `Bearer ${localStorage.getItem("token")}`
 		}
-		axios.get(`${baseUrl}/blindlist/search`, { params: { query: searchQuery, per_page: 1000 }, headers: header }).then((res) => {
+		axios.get(`${baseUrl}/api/blindlist/search`, { params: { query: searchQuery, per_page: 1000 }, headers: header }).then((res) => {
 			setResults(res.data.data);
 		});
 	}, [searchQuery])
@@ -46,8 +46,7 @@ function SearchResultsPage() {
 				<div className="text-5xl flex flex-col items-center w-full justify-center px-10">
 					<div className="mt-20 w-full grid grid-cols-[repeat(auto-fit,27rem)] gap-y-10 justify-center">
 						{results.map((list) => {
-							console.log(list)
-							return <ListExplore listName={list.name} listCreator={list.user.name} listImage={null} key={list.id} />
+							return <ListExplore id={list.id} listName={list.name} listCreator={list.user.name} listImage={null} key={list.id} />
 						}
 						)}
 					</div>

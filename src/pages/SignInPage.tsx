@@ -21,7 +21,7 @@ function SigninPage() {
         const header = {
             "Content-Type": "application/json",
         }
-        axios.post(`${baseUrl}/user/login`, {
+        axios.post(`${baseUrl}/api/user/login`, {
             name: usernameRef.current?.value,
             email: emailRef.current?.value,
             password: passwordRef.current?.value,
@@ -31,7 +31,6 @@ function SigninPage() {
             localStorage.setItem("token", res.data.token);
             navigate("/explore");
         }).catch((err) => {
-            console.log(err);
             alert(err.response.data.message)
         });
     }
