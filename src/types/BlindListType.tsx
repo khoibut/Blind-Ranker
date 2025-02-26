@@ -4,7 +4,7 @@ export type BlindListType = {
     id: number;
     name: string;
     image_path: string | null;
-    updatedAt: string;
+    updated_at: string;
     user: {
         id: number;
         name: string;

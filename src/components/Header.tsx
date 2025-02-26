@@ -42,9 +42,11 @@ function Header({ username }: { username: string | null }) {
               Create
             </div>
           </Link>
-          <div className="hover:cursor-pointer text-xl py-4 hover:text-gray-600 hover:bg-white px-10 duration-300">
-            My List
-          </div>
+          <Link to="/mylist">
+            <div className="hover:cursor-pointer text-xl py-4 hover:text-gray-600 hover:bg-white px-10 duration-300">
+              My List
+            </div>
+          </Link>
           <div className="text-xl py-4 hover:text-gray-600 hover:bg-white px-10 hover:cursor-pointer duration-300">
             My Rankings
           </div>
